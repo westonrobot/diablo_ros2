@@ -1,21 +1,21 @@
 <p align="center"><strong>DIABLO ROS2</strong></p>
-<p align="center"><a href="https://github.com/DDTRobot/diablo_sdk_v2/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-orange"/></a>
+<p align="center">
 <img alt="language" src="https://img.shields.io/badge/language-c++-red"/>
 <img alt="platform" src="https://img.shields.io/badge/platform-linux-l"/>
 </p>
 
 
 <p align="center">
-    语言：<a href="./docs/docs_en/README_EN.md"><strong>English</strong></a> / <strong>中文</strong>
+    语言：<a href="/README_EN.md"><strong>English</strong></a> / <strong>中文</strong>
 </p>
 
 
 
-​	基于串口通信的 `DIABLO` 机器人二次开发控制接口，您可以通过 `ROS2` 快速上手。如果您想要不通 `ROS` 进行开发，也可以在 [ROS](https://github.com/DDTRobot/diablo-sdk-v1) 中修改 `CMakeLists` 的方式只对源码进行编译。我们将不断的更新 `ROS2` 的功能节点 , 希望能对您的机器人开发有所帮助。
+​	基于串口通信的 `DIABLO` 机器人二次开发控制接口，您可以通过 `ROS2` 快速上手。如果您想要不通 `ROS` 进行开发，也可以在 [ROS](https://github.com/westonrobot/diablo_sdk) 中修改 `CMakeLists` 的方式只对源码进行编译。我们将不断的更新 `ROS2` 的功能节点 , 希望能对您的机器人开发有所帮助。
 
 ---
 
-![diablo_robot_render](./docs/img/diablo_robot_render.jpg)
+![diablo_robot_render](../img/diablo_robot_render.jpg)
 
 ## Basic Information 基本信息
 
@@ -39,7 +39,7 @@
 | ------------------- | --------------------- | ------------------- | ---------------------------------------- |
 | Source              | Linux , ros-foxy      | [DIABLO 开发手册](https://diablo-sdk-docs.readthedocs.io/en/latest/index.html) | [Direct drive](https://directdrive.com/) |
 
-您可以在大多数 `Linux` 设备中编译我们的 SDK 源码。或者在支持 ros-foxy 的设备中直接编译我们提供的 ros 包。
+您可以在大多数 `Linux` 设备中编译我们的 SDK 源码。或者在支持 ros-foxy 的设备中直接编译我们提供的 ROS 包。
 
 
 ## Quick Start 快速开始
@@ -47,30 +47,30 @@
 1. 创建ros工程文件夹
 
 ```bash
-#make sure you have build all dependence.
+# Make sure you have build all dependence.
 
 sudo apt-get install python3-colcon-common-extensions
 mkdir -p ~/diablo_ws/src
 cd ~/diablo_ws/src
 
-#clone API source code
+# Clone API source code
 git clone -b basic https://github.com/DDTRobot/diablo_ros2.git
 
 cd ~/diablo_ws
 colcon build
 source install/setup.bash
 
-#before starting the node , please check of serial port in diablo_ctrl.cpp is correct.
+# Before starting the node , please check of serial port in diablo_ctrl.cpp is correct.
 ros2 run diablo_ctrl diablo_ctrl_node
 
-#run controller python script
+# Run controller python script
 ros2 run diablo_teleop teleop_node 
 ```
 
 2. 完整版编译
 
 ```bash
-#make sure you have build all dependence.
+# Make sure you have build all dependence.
 
 sudo apt-get install python3-colcon-common-extensions python3-pip
 sudo pip3 install rosdep
@@ -79,7 +79,7 @@ rosdep update
 mkdir -p ~/diablo_ws/src
 cd ~/diablo_ws/src
 
-#clone API source code
+# Clone API source code
 git clone https://github.com/DDTRobot/diablo_ros2.git
 cd ~/diablo_ws
 rosdep install -i --from-path src --rosdistro foxy -y
@@ -87,40 +87,40 @@ rosdep install -i --from-path src --rosdistro foxy -y
 colcon build
 source install/setup.bash
 
-#before starting the node , please check of serial port in diablo_ctrl.cpp is correct.
+# Before starting the node , please check of serial port in diablo_ctrl.cpp is correct.
 ros2 run diablo_ctrl diablo_ctrl_node
 
-#run controller python script
+# Run controller python script
 ros2 run diablo_teleop teleop_node 
 ```
 
 ## Contents 目录
 
-以下为Ros2 节点目录 :
+以下为 ROS2 节点目录 :
 
-* [机器人传感器感知模块](./diablo_ception)
+* [机器人传感器感知模块](../../diablo_ception)
 
-  > [机器人内置传感器](./diablo_ception/diablo_body)
+  > [机器人内置传感器](../../diablo_ception/diablo_body)
 
-* [机器人SDK与通用方法模块](./diablo_common)
+* [机器人SDK与通用方法模块](../../diablo_common)
 
-* [机器人控制交互模块](./diablo_interaction)
+* [机器人控制交互模块](../../diablo_interaction)
 
-  > [获取机器人SDK控制权限](./diablo_interaction/diablo_ctrl)
+  > [获取机器人SDK控制权限](../../diablo_interaction/diablo_ctrl)
   >
-  > [捕获键盘输入信息](./diablo_interaction/diablo_teleop)
+  > [捕获键盘输入信息](../../diablo_interaction/diablo_teleop)
 
-* [ROS自定义消息模块](./diablo_interfaces)
+* [ROS 自定义消息模块](../../diablo_interfaces)
 
-  > [机器人基础控制信息](./diablo_interfaces/motion_msgs)
+  > [机器人基础控制信息](../../diablo_interfaces/motion_msgs)
 
-* [Ros可视化仿真模块](./diablo_visualise)
+* [ROS 可视化仿真模块](../../diablo_visualise)
 
-  > [Ros rviz2 gazebo simulation](./diablo_visualise/diablo_simulation)
+  > [ROS Rviz2 Gazebo Simulation](../../diablo_visualise/diablo_simulation)
   >
-  > [Rviz2 自定义遥控器界面](./diablo_visualise/diablo_rviz2_plugin)
+  > [Rviz2 自定义遥控器界面](../../diablo_visualise/diablo_rviz2_plugin)
   >
-  > [电机角度转Rviz2显示角度](./diablo_visualise/diablo_simpose_trans)
+  > [电机角度转 Rviz2 显示角度](../../diablo_visualise/diablo_simpose_trans)
 
   
 
